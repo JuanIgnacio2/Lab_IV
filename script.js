@@ -1,3 +1,4 @@
+// contact.html
 // Obtener referencias a los elementos del DOM
 const form = document.getElementById('consulta-form');
 const errorMessage = document.getElementById('error-message');
@@ -10,8 +11,8 @@ form.addEventListener('submit', function(event) {
     event.preventDefault(); // Evitar el envío del formulario por defecto
     
     // Realizar la validación del formulario
-    if (formValidate()) {
-        // Si el formulario es válido, enviar los datos
+    if (formValidate() && captchaCalculate()) {
+        // Si el formulario es válido y el captcha es correcto, enviar los datos
         alert('Formulario enviado correctamente');
         // Aquí puedes agregar el código para enviar los datos del formulario al servidor
     }
@@ -25,6 +26,9 @@ form.addEventListener('input', function() {
         submitButton.disabled = true;
     }
 });
+
+// Mostrar el captcha al cargar la página
+captchaCalculate();
 
 // Función para validar el formulario
 function formValidate() {
