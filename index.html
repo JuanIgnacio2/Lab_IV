@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="content">
+        <h1>Mi empresa de software</h1>
+    </header>
+    <navbar>
+        <a class="btn" href="index.html">Home</a>
+        <a class="btn" href="views/about.html">About</a>
+        <a class="btn" href="views/contact.html">Contact</a>
+    </navbar>
+    <section id="main">
+        <h1>Bienvenido</h1>
+        <p>Aquí encontrarás detalles de nuestros servicios.</p>
+        <div class="services" onclick="toggleDetails('details_1')">
+            <img src="assets/ui_ux.webp" alt="UI/UX Design">
+            <h3>UI/UX Design</h3>
+            <p>Desarrollo de interfaces y experiencia de usuario</p>
+            <div id="details_1" class="details">
+                <ul>
+                    <li><strong>Plazos de entrega:</strong> 2 semanas</li>
+                    <li><strong>Puesta en marcha:</strong> Asistencia técnica incluida</li>
+                    <li><strong>Licencia:</strong> Licencias de logos y diseños</li>
+                    <li><strong>Precio:</strong> $1000</li>
+                    <li><strong>Formas de pago:</strong> <br>Transferencia bancaria, tarjetas de credito, crypto</li>
+                </ul>
+            </div>
+        </div>
+        <div class="services" onclick="toggleDetails('details_2')">
+            <img src="assets/code.webp" alt="Desarrollo de software">
+            <h3>Desarrollo de software</h3>
+            <p>Software a medida</p>
+            <div id="details_2" class="details">
+                <ul>
+                    <li><strong>Plazos de entrega:</strong> 2 semanas</li>
+                    <li><strong>Puesta en marcha:</strong> Asistencia técnica incluida</li>
+                    <li><strong>Licencia:</strong> Licencias de logos y diseños</li>
+                    <li><strong>Precio:</strong> $1000</li>
+                    <li><strong>Formas de pago:</strong> <br>Transferencia bancaria, tarjetas de credito, crypto</li>
+                </ul>
+            </div>
+        </div>
+        <div class="services" onclick="toggleDetails('details_3')">
+            <img src="assets/web.webp" alt="Diseño web">
+            <h3>Diseño web</h3>
+            <p>Desarrollo de páginas web a medida</p>
+            <div id="details_3" class="details">
+                <ul>
+                    <li><strong>Plazos de entrega:</strong> 2 semanas</li>
+                    <li><strong>Puesta en marcha:</strong> Asistencia técnica incluida</li>
+                    <li><strong>Licencia:</strong> Licencias de logos y diseños</li>
+                    <li><strong>Precio:</strong> $1000</li>
+                    <li><strong>Formas de pago:</strong> <br>Transferencia bancaria, tarjetas de credito, crypto</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+    <footer class="content" id = "footer">
+        <h5>Copyright y coso</h5>
+    </footer>
+</body>
+</html>
