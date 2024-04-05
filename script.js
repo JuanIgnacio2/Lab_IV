@@ -1,91 +1,88 @@
-// contact.html
-// Obtener referencias a los elementos del DOM
-const form = document.getElementById('consulta-form');
-const errorMessage = document.getElementById('error-message');
-const captchaContainer = document.getElementById('captcha-container');
-const captchaQuestion = document.getElementById('captcha-question');
-const submitButton = document.getElementById('submit-btn');
-
-// Agregar evento submit al formulario
-form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
-    
-    // Realizar la validación del formulario
-    if (formValidate() && captchaCalculate()) {
-        // Si el formulario es válido y el captcha es correcto, enviar los datos
-        alert('Formulario enviado correctamente');
-        // Aquí puedes agregar el código para enviar los datos del formulario al servidor
+// CONTACT.HTML
+document.getElementById('captcha').addEventListener('input', function() {
+    var captchaInput = document.getElementById('captcha').value.trim();
+    var submitBtn = document.getElementById('submitBtn');
+    submitBtn.disabled = (captchaInput === ''); // Deshabilitar el botón si el CAPTCHA está vacío
+  });
+  
+  // Función para ocultar el mensaje de error después de 4 segundos
+  function hideErrorMessage() {
+    document.getElementById('error-message').style.display = 'none';
+  }
+  
+  // Función para mostrar el mensaje de error
+  function showErrorMessage(message) {
+    document.getElementById('error-message').innerText = message;
+    document.getElementById('error-message').style.display = 'block';
+  
+    // Ocultar el mensaje después de 4 segundos
+    setTimeout(hideErrorMessage, 4000);
+  }
+  
+  // Función para validar el formulario
+  function formValidate() {
+    var fname = document.getElementById('fname').value.trim();
+    var lname = document.getElementById('lname').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var message = document.getElementById('message').value.trim();
+    var company = document.getElementById('company').value.trim();
+    var captcha = document.getElementById('captcha').value.trim(); // Obtener el valor del CAPTCHA
+    var errorMessage = '';
+  
+    // Validar la operación CAPTCHA
+    if (captcha !== '12') {
+      errorMessage += 'Por favor, resuelve correctamente la operación CAPTCHA.\n';
     }
-});
-
-// Agregar evento input a los campos del formulario para habilitar el botón de enviar cuando se resuelva el captcha
-form.addEventListener('input', function() {
-    if (captchaCalculate()) {
-        submitButton.disabled = false;
-    } else {
-        submitButton.disabled = true;
+  
+    if (fname === '' || lname === '' || email === '' || phone === '' || message === '' || company === '') {
+        errorMessage += 'Por favor, complete todos los campos.\n';
     }
-});
-
-// Mostrar el captcha al cargar la página
-captchaCalculate();
-
-// Función para validar el formulario
-function formValidate() {
-    errorMessage.innerText = ''; // Reiniciar mensaje de error
-    
-    // Obtener valores de los campos del formulario
-    const nombre = document.getElementById('nombre').value;
-    const apellido = document.getElementById('apellido').value;
-    const email = document.getElementById('email').value;
-    const telefono = document.getElementById('telefono').value;
-    const detalleConsulta = document.getElementById('detalle-consulta').value;
-    
-    // Validar que los campos no estén vacíos
-    if (!nombre || !apellido || !email || !telefono || !detalleConsulta) {
-        errorMessage.innerText = 'Todos los campos son obligatorios';
-        return false;
+  
+    if (!/^\d+$/.test(phone)) {
+        errorMessage += 'El teléfono solo puede contener números.\n';
     }
-    
-    // Validar el formato del email
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        errorMessage.innerText = 'Por favor, introduce un email válido';
-        return false;
+  
+    if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email)) {
+        errorMessage += 'Por favor, ingrese un email válido.\n';
     }
-    
-    // Validar el formato del teléfono (solo números)
-    const telefonoPattern = /^\d+$/;
-    if (!telefonoPattern.test(telefono)) {
-        errorMessage.innerText = 'El teléfono solo puede contener números';
-        return false;
+  
+    if (errorMessage !== '') {
+        showErrorMessage(errorMessage);
+        return false; // Detiene el envío del formulario
     }
-    
-    // Si pasa todas las validaciones, el formulario es válido
-    return true;
-}
+  
+    // Aquí el formulario es válido
+    alert('Mensaje enviado');
+    return true; // Permite el envío del formulario
+  }
+  
+  // Event listener para el botón "Limpiar"
+  document.querySelector('.btn-warning').addEventListener('click', function() {
+    document.getElementById('submitBtn').disabled = true; // Deshabilitar el botón "Enviar"
+  });
+  
+  // Agregar evento input a cada campo de entrada para ocultar el mensaje de error cuando el usuario interactúa con ellos
+  var inputs = document.querySelectorAll('input, textarea');
+  inputs.forEach(function(input) {
+    input.addEventListener('input', function() {
+        hideErrorMessage();
+    });
+  });
 
-// Función para generar y mostrar el captcha
-function captchaCalculate() {
-    const num1 = Math.floor(Math.random() * 10); // Operando 1
-    const num2 = Math.floor(Math.random() * 10); // Operando 2
-    const operator = Math.random() < 0.5 ? '+' : '-'; // Operador (suma o resta)
-    const correctAnswer = operator === '+' ? num1 + num2 : num1 - num2; // Calcular la respuesta correcta
-    
-    // Mostrar la pregunta del captcha
-    captchaQuestion.innerText = `¿Cuánto es ${num1} ${operator} ${num2}?`;
-    
-    // Devolver true si la respuesta es correcta, de lo contrario false
-    return captchaVerify(correctAnswer);
-}
+  document.getElementById('boton-whatsapp').addEventListener('click', function() {
+    enviarMensajeWhatsApp();
+  });
+  
+  // Función para enviar un mensaje a través de WhatsApp
+  function enviarMensajeWhatsApp() {
+    var mensaje = encodeURIComponent("Hola, me gustaría obtener más información."); // Mensaje predefinido
+    var numero = "+54 9 3434643057"; // Reemplazar con número de teléfono, incluyendo el código de país (sin el signo "+" ni guiones).
+    var url = "https://web.whatsapp.com/send?phone=" + numero + "&text=" + mensaje;
+    window.open(url, '_blank');
+  }
 
-// Función para verificar la respuesta del captcha
-function captchaVerify(correctAnswer) {
-    const userAnswer = document.getElementById('captcha').value;
-    return parseInt(userAnswer) === correctAnswer;
-}
-
-// index.html
+// INDEX.HTML
 function toggleDetails(detailsId){
     const details = document.getElementById(detailsId);
     const allDetails = document.querySelectorAll('.details');
