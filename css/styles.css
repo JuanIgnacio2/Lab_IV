@@ -30,12 +30,12 @@ body{
 
   .services img {
     width: 100%; 
-    height: auto; 
+    height: auto;
     display: block; 
     border-radius: 50%;
     transition: transform 0.1s ease-in-out;
     width: 300px; 
-    height: 300px; 
+    height: 300px;
   }
 
   .services img:hover {
@@ -60,15 +60,17 @@ body{
     transform: scale(1.05);
 }
 
+/*about.html*/
+
 .details{
-    display: none; /* Ocultar detalles por defecto */
-    position: absolute; /* Posición absoluta para evitar desplazamiento */
-    top: 100%; /* Alinea los detalles debajo del elemento padre */
-    left: 0; /* Alinea los detalles a la izquierda del elemento padre */
-    width: 100%; /* Ocupa el ancho completo del contenedor padre */
-    padding: 10px; /* Añade espacio alrededor de los detalles */
-    box-sizing: border-box; /* Incluye el padding en el ancho total */
-    z-index: 1; /* Asegura que los detalles estén sobre otros elementos */
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 1;
 }
 
 .details.show{

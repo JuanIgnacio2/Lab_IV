@@ -5,7 +5,7 @@ document.getElementById('captcha').addEventListener('input', function() {
     submitBtn.disabled = (captchaInput === ''); // Deshabilitar el botón si el CAPTCHA está vacío
   });
   
-  // Función para ocultar el mensaje de error después de 4 segundos
+  // Ocultar advertencias después de 4 segundos
   function hideErrorMessage() {
     document.getElementById('error-message').style.display = 'none';
   }
@@ -31,8 +31,8 @@ document.getElementById('captcha').addEventListener('input', function() {
     var errorMessage = '';
   
     // Validar la operación CAPTCHA
-    if (captcha !== '12') {
-      errorMessage += 'Por favor, resuelve correctamente la operación CAPTCHA.\n';
+    if (captcha !== '15') {
+      errorMessage += 'Resuelva la operación CAPTCHA.\n';
     }
   
     if (fname === '' || lname === '' || email === '' || phone === '' || message === '' || company === '') {
@@ -44,7 +44,7 @@ document.getElementById('captcha').addEventListener('input', function() {
     }
   
     if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email)) {
-        errorMessage += 'Por favor, ingrese un email válido.\n';
+        errorMessage += 'Por favor, ingrese un correo electrónico válido.\n';
     }
   
     if (errorMessage !== '') {
@@ -76,7 +76,7 @@ document.getElementById('captcha').addEventListener('input', function() {
   
   // Función para enviar un mensaje a través de WhatsApp
   function enviarMensajeWhatsApp() {
-    var mensaje = encodeURIComponent("Hola, me gustaría obtener más información."); // Mensaje predefinido
+    var mensaje = encodeURIComponent("Hola, quisiera saber más sobre este servicio"); // Mensaje predefinido
     var numero = "+54 9 3434643057"; // Reemplazar con número de teléfono, incluyendo el código de país (sin el signo "+" ni guiones).
     var url = "https://web.whatsapp.com/send?phone=" + numero + "&text=" + mensaje;
     window.open(url, '_blank');
