@@ -1,3 +1,31 @@
+//THEME
+  var icon = document.getElementById("icon");
+
+  if(localStorage.getItem("theme")==null){
+    localStorage.setItem("theme","dark");
+  }
+
+  let localData = localStorage.getItem("theme");
+
+  if(localData == "dark"){
+    icon.src = "../assets/sun.png";
+    document.body.classList.remove("light-theme");
+  }else if(localData == "light"){
+    icon.src = "../assets/moon.png";
+    document.body.classList.remove("light-theme");
+  }
+
+  icon.onclick = function(){
+    document.body.classList.toggle("light-theme");
+    if(document.body.classList.contains("light-theme")){
+      icon.src = "../assets/moon.png";
+      localStorage.setItem("theme","light");
+    }else{
+      icon.src = "../assets/sun.png";
+      localStorage.setItem("theme","dark");
+    }
+  }
+
 // CONTACT.HTML
 document.getElementById('captcha').addEventListener('input', function() {
     var captchaInput = document.getElementById('captcha').value.trim();
@@ -103,4 +131,12 @@ function toggleDetails(detailsId){
         details.style.display = 'block';
         footer.style.marginTop = details.offsetHeight + 'px'; // Ajustar el margen superior del footer según la altura de los detalles
     }
+}
+
+//Deslizar al hacer click en uno de los servicios
+function scrollToService(serviceId) {
+  var serviceElement = document.getElementById(serviceId);
+  if (serviceElement) {
+      serviceElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }

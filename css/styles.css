@@ -1,20 +1,67 @@
 .content{
-    background-color: #434343;
+    background-color: var(--primary-color);
+}
+:root{
+    --primary-color: #434343;
+    --secondary-color:#ffffff;
 }
 
-header{
-    background-color: #434343;
-    text-align: center;
-    color: #fff;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+.light-theme{
+    --primary-color: #f5f5f5;
+    --secondary-color:#434343;
 }
 
 body{
-    background-color: #434343;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     align-items: center;
     text-align: center;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/*.navbar{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}*/
+
+#icon{
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+
+.btn{
+    display: inline-block;
+    padding: 12px 24px;
+    position: relative;
+    margin: 20px;
+    color: var(--secondary-color);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s easetransform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.btn:after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background-color: #075ab3;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.6 ease-out;
+}
+
+.btn:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 .services {
@@ -24,7 +71,7 @@ body{
     margin: 20px;
     text-align: center;
     cursor: pointer;
-    color: #fff;
+    color: var(--secondary-color);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
@@ -34,33 +81,33 @@ body{
     display: block; 
     border-radius: 50%;
     transition: transform 0.1s ease-in-out;
-    width: 350px; 
-    height: 350px;
+    width: 250px; 
+    height: 250px;
   }
 
   .services img:hover {
     transform: scale(1.1); /* Efecto de escala al pasar el cursor sobre la imagen */
   }
 
-.btn{
-    display: inline-block;
-    padding: 12px 24px;
-    margin: 10px;
-    background-color: #007bff;
-    color: #fff;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s easetransform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+
+/*ABOUT.HTML*/
+
+#about{
+    width: 700px;
+    padding: 40px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.btn:hover {
-    background-color: #0056b3;
-    color: #ffffff;
-    transform: scale(1.05);
+summary{
+    background: #007bff;
+    color: var(--secondary-color);
+    padding: 10px;
+    list-style: none;
+    cursor: pointer;
 }
-
-/*about.html*/
 
 .details{
     display: none;
@@ -77,7 +124,7 @@ body{
     display: block;
 }
 
-/*contact.html*/
+/*CONTACT.HTML*/
 #consulta-form form{
     width: 600px;
     margin: 0 auto;
@@ -141,7 +188,7 @@ form button{
     border-radius: 6px;
     /*box-shadow: 0 0 10px #007bff;*/
     font-size: 16px;
-    color:#fff;
+    color:var(--secondary-color);
     cursor: pointer;
     margin-top: 20px;
 }
@@ -150,26 +197,11 @@ form button{
     box-shadow: none;
 }*/
 
-#about{
-    width: 700px;
-    padding: 40px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-summary{
-    background: #007bff;
-    color: #fff;
-    padding: 10px;
-    list-style: none;
-    cursor: pointer;
-}
 
 footer{
     position: relative;
-    color: #fff;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     text-align: center;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }

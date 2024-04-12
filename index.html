@@ -7,21 +7,18 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="content">
-        <h1>Mi empresa de software</h1>
-    </header>
     <navbar>
         <a class="btn" href="index.html">Home</a>
         <a class="btn" href="views/about.html">About</a>
         <a class="btn" href="views/contact.html">Contact</a>
+        <img src="assets/sun.png" id="icon">
     </navbar>
     <section id="main">
-        <h1>Bienvenido</h1>
-        <p>Aquí encontrarás detalles de nuestros servicios.</p>
-        <div class="services" onclick="toggleDetails('details_1')">
+        <h1>Nuestros servicios</h1>
+        <div class="services" onclick="toggleDetails('details_1'), scrollToService('details_1')">
             <img src="assets/ux_ui.webp" alt="UI/UX Design">
             <h3>UI/UX Design</h3>
-            <p>Desarrollo de interfaces y experiencia de usuario</p>
+            <p>Desarrollo de interfaces y <br>experiencia de usuario</p>
             <div id="details_1" class="details">
                 <ul>
                     <li><strong>Plazos de entrega:</strong> X semanas</li>
@@ -30,9 +27,10 @@
                     <li><strong>Precio:</strong> $</li>
                     <li><strong>Formas de pago:</strong> <br>Transferencia bancaria, tarjetas de credito, crypto</li>
                 </ul>
+                <button class="info-btn">Más información</button>
             </div>
         </div>
-        <div class="services" onclick="toggleDetails('details_2')">
+        <div class="services" onclick="toggleDetails('details_2'), scrollToService('details_2')">
             <img src="assets/code.webp" alt="Desarrollo de software">
             <h3>Desarrollo de software</h3>
             <p>Software a medida</p>
@@ -44,9 +42,10 @@
                     <li><strong>Precio:</strong> $</li>
                     <li><strong>Formas de pago:</strong> <br>Transferencia bancaria, tarjetas de credito, crypto</li>
                 </ul>
+                <button class="info-btn">Más información</button>
             </div>
         </div>
-        <div class="services" onclick="toggleDetails('details_3')">
+        <div class="services" onclick="toggleDetails('details_3'), scrollToService('details_3')">
             <img src="assets/web.webp" alt="Diseño web">
             <h3>Diseño web</h3>
             <p>Desarrollo de páginas web a medida</p>
@@ -58,6 +57,7 @@
                     <li><strong>Precio:</strong> $</li>
                     <li><strong>Formas de pago:</strong> <br>Transferencia bancaria, tarjetas de credito, crypto</li>
                 </ul>
+                <button class="info-btn">Más información</button>
             </div>
         </div>
     </section>
