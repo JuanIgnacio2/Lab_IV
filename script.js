@@ -1,30 +1,39 @@
 //THEME
-  var icon = document.getElementById("icon");
+var icon = document.getElementById("icon");
 
-  if(localStorage.getItem("theme")==null){
-    localStorage.setItem("theme","dark");
-  }
-
-  let localData = localStorage.getItem("theme");
-
-  if(localData == "dark"){
-    icon.src = "../assets/sun.png";
-    document.body.classList.remove("light-theme");
-  }else if(localData == "light"){
-    icon.src = "../assets/moon.png";
-    document.body.classList.remove("light-theme");
-  }
-
-  icon.onclick = function(){
+// Función para cambiar el tema y guardar el estado
+function toggleTheme() {
     document.body.classList.toggle("light-theme");
-    if(document.body.classList.contains("light-theme")){
-      icon.src = "../assets/moon.png";
-      localStorage.setItem("theme","light");
-    }else{
-      icon.src = "../assets/sun.png";
-      localStorage.setItem("theme","dark");
+    if (document.body.classList.contains("light-theme")) {
+        icon.src = "../assets/moon.png";
+        localStorage.setItem("theme", "light");
+    } else {
+        icon.src = "../assets/sun.png";
+        localStorage.setItem("theme", "dark");
     }
-  }
+}
+
+// Verificar y aplicar el tema guardado al cargar la página
+if (localStorage.getItem("theme") == "light") {
+    toggleTheme();
+}
+
+//Botón activo
+var nav = document.getElementById("navbar");
+var btn = document.getElementsByClassName("btn");
+for(let i = 0; i < btn.length; i++){
+  btn[i].addEventListener("click",function(){
+    var current = document.getElementsByClassName("active");
+    if (current.length > 0) {
+      current[0].className = current[0].className.replace(" active", "");
+    }
+    this.classList.add("active");
+  });
+}
+
+
+// Manejar el evento de clic en el icono para cambiar el tema
+icon.onclick = toggleTheme;
 
 // CONTACT.HTML
 document.getElementById('captcha').addEventListener('input', function() {

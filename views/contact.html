@@ -13,46 +13,48 @@
         <a class="btn" href="contact.html">Contact</a>
         <img src="../assets/sun.png" id="icon">
     </navbar>
-    <section id="contact">
-        <h1>Contactame abajo</h1>
-        <form action="enviar.php" method="post">
-          <label for="fname">Nombre:</label>
-          <input type="text" id="fname" name="fname" required>
-          <label for="lname">Apellido:</label>
-          <input type="text" id="lname" name="lname" required><br>
-          <label for="company">Empresa:</label>
-          <input type="text" id="company" name="company">
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required><br>
-          <label for="phone">Teléfono:</label>
-          <input type="tel" id="phone" name="phone"><br>
-          <label for="message">Detalle consulta:</label><br>
-          <textarea id="message" name="message" rows="4" cols="50" required></textarea><br>
-          <br>
-          <label>CAPTCHA</label><br>
-          <label for="captcha">Resuelva la siguiente operación: 8 + 7 =</label><br>
-          <input type="text" id="captcha" name="captcha" required><br>
-          <br>
-          <button type="button" onclick="formValidate()" class="btn btn-success" id="submitBtn" disabled>Enviar</button>
-          <button type="reset" class="btn btn-warning">Limpiar</button>
-          <br> 
-          <p>Contactenos por WhatsApp</p>
-          <button id="boton-whatsapp" class="botonnav">WhatsApp</button>
+    <section class="contact">
+        <h2>Contactame abajo</h2>
+        <form action="#">
+            <div class="input-box">
+                <div class="input-field field">
+                    <input type="text" placeholder="Nombre" id="Nombre"
+                    class = "item" autocomplete="off">
+                    <div class="error-txt">El campo nombre no puede estar vacío</div>
+                </div>
+                <div class="input-field field">
+                    <input type="text" placeholder="Apellido" id="Apellido"
+                    class = "item" autocomplete="off">
+                    <div class="error-txt">El campo apellido no puede estar vacío</div>
+                </div>
+            </div>
+            <div class="input-box">
+                <div class="input-field field">
+                    <input type="text" placeholder="Empresa" id="Empresa"
+                    class = "item" autocomplete="off">
+                    <div class="error-txt">El campo empresa no puede estar vacío</div>
+                </div>
+                <div class="input-field field">
+                    <input type="text" placeholder="Telefono" id="Telefono"
+                    class = "item" autocomplete="off">
+                    <div class="error-txt">El campo telefono no puede estar vacío</div>
+                </div>
+            </div>
+            <div class="input-box">
+                <div class="input-field field">
+                    <input type="text" placeholder="Correo electrónico" id="Email"
+                    class = "item" autocomplete="off">
+                    <div class="error-txt">El campo correo no puede estar vacío</div>
+                </div>
+            </div>
+            <div class="textarea-field field">
+                <textarea name="" id="message" cols="30" rows="10" 
+                placeholder="Su mensaje" class="item"
+                autocomplete="off"></textarea>
+            </div>
+            <button type="submit">Enviar</button>
         </form>
-      </section>
-      <div id="error-message"></div>
-      <footer class="content">
-          <h5>Copyright y coso</h5>
-        </footer>
-        <script>
-            window.onload = function() {
-                var urlParams = new URLSearchParams(window.location.search);
-                var product = urlParams.get('product');
-                if (product) {
-                    document.getElementById("message").value = "Hola, quisiera saber más sobre este servicio " + product;
-                }
-            }
-            </script>
-        <script src="../script.js"></script>
+    </section>
+    <script src="../script.js"></script>
 </body>
 </html>
