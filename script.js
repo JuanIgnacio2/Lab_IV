@@ -31,12 +31,104 @@ for(let i = 0; i < btn.length; i++){
   });
 }
 
-
 // Manejar el evento de clic en el icono para cambiar el tema
 icon.onclick = toggleTheme;
 
 // CONTACT.HTML
-document.getElementById('captcha').addEventListener('input', function() {
+const form = document.querySelector('form');
+const nombre = document.getElementById("Nombre");
+const apellido = document.getElementById("Apellido");
+const empresa = document.getElementById("Empresa");
+const telefono = document.getElementById("Telefono");
+const correoElectronico = document.getElementById("Email");
+const mensaje = document.getElementById("message");
+
+function sendEmail(){
+  const bodyMessage = `Nombre: ${nombre.value}<br> 
+  Apellido: ${apellido.value}<br> Empresa: ${empresa.value}<br> 
+  Teléfono: ${telefono.value}<br> Email: ${nombre.value}<br> 
+  Mensaje: ${mensaje.value}<br> `;
+  Email.send({
+    SecureToken : "e84d5d2f-76b9-4cc2-b945-dbc35a5e3893",
+    To : 'correo2024ejemplo@gmail.com',
+    From : "correo2024ejemplo@gmail.com",
+    Subject : "Info de servicio",
+    Body : bodyMessage
+  }).then(
+  message => {
+    if(message == "OK"){
+      Swal.fire({
+        title: "Éxito!",
+        text: "Mensaje enviado",
+        icon: "succes",
+      });
+    }
+  });
+}
+
+function checkInputs(){
+  const items = document.querySelectorAll(".item");
+
+  for(const item of items){
+    if(item.value == ""){
+      item.classList.add("error");
+        item.parentElement.classList.add("error");
+      }
+
+      if(items[4].value != ""){
+        checkEmail();
+      }
+
+      items[4].addEventListener("keyup", () =>{
+        checkEmail();
+      });
+
+      item.addEventListener("keyup", ()=>{
+        if(item.value != ""){
+          item.classList.remove("error");
+          item.parentElement.classList.remove("error");
+        }
+        else{
+          item.classList.add("error");
+          item.parentElement.classList.add("error");
+        }
+      });
+    }
+  }
+
+function checkEmail(){
+  const emailRegex = /^([a-z\d\.-]+)@([a-z\d\-]+)\.([a-z]{2,3})(\.[a-z]{2,3})?$/;
+  const errorTxtEmail = document.querySelector(".error-txt.email");
+
+  if(!correoElectronico.matches(emailRegex)){
+    Email.classList.add("error");
+    Email.parentElement.classList.add("error");
+
+    if(Email.value != ""){
+      errorTxtEmail.innerText = "Ingrese una dirección de correo válida";
+    }
+    else{
+      errorTxtEmail.innerText = "El campo correo no puede estar vacío";
+    }
+  }
+  else{
+    Email.classList.remove("error");
+    Email.parentElement.classList.remove("error");
+  }
+}
+
+form.addEventListener("submit", (e)=>{
+  e.preventDefault();
+  checkInputs();
+  if(!nombre.classList.contains("error") && !apellido.classList.contains("error") && !empresa.classList.contains("error") &&
+  !telefono.classList.contains("error") && !correoElectronico.classList.contains("error") && !mensaje.classList.contains("error")){
+    sendEmail();
+
+    form.reset;
+    return false;
+  }
+});
+/*document.getElementById('captcha').addEventListener('input', function() {
     var captchaInput = document.getElementById('captcha').value.trim();
     var submitBtn = document.getElementById('submitBtn');
     submitBtn.disabled = (captchaInput === ''); // Deshabilitar el botón si el CAPTCHA está vacío
@@ -117,7 +209,7 @@ document.getElementById('captcha').addEventListener('input', function() {
     var numero = "+54 9 3434643057"; // Reemplazar con número de teléfono, incluyendo el código de país (sin el signo "+" ni guiones).
     var url = "https://web.whatsapp.com/send?phone=" + numero + "&text=" + mensaje;
     window.open(url, '_blank');
-  }
+  }*/
 
 // INDEX.HTML
 function toggleDetails(detailsId){

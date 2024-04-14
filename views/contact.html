@@ -44,17 +44,19 @@
                 <div class="input-field field">
                     <input type="text" placeholder="Correo electrónico" id="Email"
                     class = "item" autocomplete="off">
-                    <div class="error-txt">El campo correo no puede estar vacío</div>
+                    <div class="error-txt email">El campo correo no puede estar vacío</div>
                 </div>
             </div>
             <div class="textarea-field field">
                 <textarea name="" id="message" cols="30" rows="10" 
                 placeholder="Su mensaje" class="item"
                 autocomplete="off"></textarea>
+                <div class="error-txt">El campo mensaje no puede estar vacío</div>
             </div>
             <button type="submit">Enviar</button>
         </form>
     </section>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="../script.js"></script>
 </body>
 </html>

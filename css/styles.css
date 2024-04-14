@@ -120,7 +120,8 @@ summary{
 }
 
 /*CONTACT.HTML*/
-#consulta-form form{
+
+.contact form{
     width: 600px;
     margin: 0 auto;
     text-align: center;
@@ -144,11 +145,11 @@ form .input-box{
 }
 
 .input-box .input-field{
-    width: 48%;
+    width: 48.5%;
 }
 
 .field .item{
-    width: 50%;
+    width: 85%;
     padding: 18px;
     background: transparent;
     border: 2px solid var(--third-color);
@@ -172,7 +173,7 @@ form .textarea-field .error-txt{
 }
 
 .field .item::placeholder{
-    color: rgba(255,255,255,3);
+    color: var(--secondary-color)
 }
 
 form button{
@@ -186,10 +187,6 @@ form button{
     cursor: pointer;
     margin-top: 20px;
 }
-
-/*form button:hover{
-    box-shadow: none;
-}*/
 
 .error-message {
     display: none;
